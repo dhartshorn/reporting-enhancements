@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- (1) Whitney Font -->
+  <link href="https://static.ctctcdn.com/lp/fonts/whitney/whitney-current.css" rel="stylesheet"><!-- (2) FED CSS -->
+  <link href="https://static.ctctcdn.com/lp/fonts/whitney/whitney-current.css" rel="stylesheet">
+  <link href="https://static.ctctcdn.com/h/fed-framework/2.0.0-73/fed.min.css" rel="stylesheet">
+  <link href="extra2.css" rel="stylesheet" type="text/css"><!-- (4) jQuery -->
+
+
+  <script src="https://static.ctctcdn.com/h/jquery/2.1.4/jquery.min.js">
+  </script><!-- (5) FED JavaScript -->
+
+<!-- SCRIPTS -->
+
+  <script src="https://static.ctctcdn.com/h/moment/2.11.2/moment.min.js">
+  </script>
+  <script src="https://static.ctctcdn.com/h/fed-framework/2.0.0-72/fed.min.js">
+  </script>
+  <script src="https://static.ctctcdn.com/h/fed-framework/2.0.0-72/fed-folders.min.js">
+  </script>
+  <script src="https://static.ctctcdn.com/h/fed-framework/2.0.0-72/fed-typeahead.min.js">
+  </script>
+  <script src="public/prettify.js">
+  </script>
+  <script src="js/clipboard.min.js">
+  </script>
+  <script src="js/copyCode.js">
+  </script>
+  <script src="js/createCodepen.js">
+  </script>
+  <script src="js/lunr.min.js">
+  </script>
+  <script src="js/lunrSearch.js">
+  </script>
+  <script src="js/navigation.js">
+  </script>
+  <script src="js/folder-controller.js">
+  </script>
+  <script src="js/colorPicker-controller.js">
+  </script>
+  <script src="https://code.highcharts.com/highcharts.js">
+  </script>
+  <script src="https://code.highcharts.com/modules/exporting.js">
+  </script>
+  <meta charset="utf-8">
+  <title>Trends</title>
+  <style>
+    .callouts-flex-custom {
+      align-items: stretch !important;
+    }
+    .callouts-flex-custom-child {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <!-- (3) FED Wrapper -->
+  <div class="fed-wrapper">
+    <!-- FAKE NAV -->
+    <div id="fakeNav">
+      <ul>
+        <li class="logoNav">Home</li>
+        <li>Campaigns</li>
+        <li>Contacts</li>
+        <li><span class="selected">Trends</span></li>
+        <li>Sign-up Forms</li>
+        <li>Library</li>
+        <li>Social Posts</li>
+        <li>Integrations</li>
+      </ul>
+    </div>
+    <div class="innerWrapper u-centerBlock u-paddingSidesDouble u-paddingEnds">
+      <div class="u-size10of12">
+        <p class="u-fontSizeXXLarge u-weightSemiBold u-marginBottomHalf u-centerBlock u-marginTopHalf">Trends</p>
+        <div class="Tab js-tab" data-qe-id="Tab-ID">
+          <a data-qe-id="Tab-ID-OPTION1" href="#tab-1">Emails</a> 
+          <a data-qe-id="Tab-ID-OPTION2" href="#tab-2">Contacts</a>
+          <!-- <a data-qe-id="Tab-ID-OPTION3" href="#tab-3">Action Blocks</a> -->
+        </div>
+        <div class="TabContent">
+          <div id="tab-1">
+            <header class="HeaderBar">
+              <div class="HeaderBar-title">
+                <h4 class="SectionHeading">Email Performance Over Time</h4>
+                <h2>See how your emails performed during a specified time period.</h2>
+              </div>
+              <div class="HeaderBar-right">
+                <button class="Button Button--dropdown js-menu" type="button"><span data-menu-button-text="">Last 12 months</span></button> 
+                <script>
+                            $('.js-menu').fedMenu({
+                              selectable: true,
+                                    items: [
+                                    { text: 'Last 12 months', value: 'Last 12 months' },
+                                    { text: 'Last 30 days', value: 'Last 30 days' },
+                                    { text: 'Last 7 days', value: 'Last 7 days' },
+                                    { text: 'Last 24 hours', value: 'Last 24 hours' }
+                                      ]
+                                  });
+                </script>
+              </div>
+            </header>
+            <div class="Layout">
+              <div class="Layout-col-6 b2-Layout-col-3 u-marginBottomHalf">
+                <div class="Well Well--thin u-textCenter">
+                  <div class="u-fontSizeXXLarge u-weightBold u-colorLink">
+                    879
+                  </div>
+                  <div>
+                    Total Sent
+                  </div>
+                </div>
+              </div>
+              <div class="Layout-col-6 b2-Layout-col-3 u-marginBottomHalf">
+                <div class="Well Well--thin u-textCenter">
+                  <div class="u-fontSizeXXLarge u-weightBold u-colorLink">
+                    631
+                  </div>
+                  <div>
+                    Total Clicks
+                  </div>
+                </div>
+              </div>
+              <div class="Layout-col-6 b2-Layout-col-3 u-marginBottomHalf">
+                <div class="Well Well--thin u-textCenter">
+                  <div class="u-fontSizeXXLarge u-weightBold u-colorLink">
+                    744
+                  </div>
+                  <div>
+                    Total Opens
+                  </div>
+                </div>
+              </div>
+              <div class="Layout-col-6 b2-Layout-col-3 u-marginBottomHalf">
+                <div class="Well Well--thin u-textCenter">
+                  <div class="u-fontSizeXXLarge u-weightBold u-colorLink">
+                    257
+                  </div>
+                  <div>
+                    Mobile opens
+                  </div>
+                </div>
+              </div>
+            </div>
+            <header class="HeaderBar u-marginTopDouble">
+              <div class="HeaderBar-title">
+                <button class="Button Button--dropdown js-export-graph-menu" type="button"><span data-menu-button-text="">Download Graph</span></button> 
+                <script>
+                            $('.js-export-graph-menu').fedMenu({
+                                    items: [
+                                    { text: 'Download .png', value: 'png' },
+                                    { text: 'Download .jpg', value: 'jpg' },
+                                    { text: 'Download .svg', value: 'svg' },
+                                    { text: 'Download .pdf', value: 'pdf' }
+
+                                      ]
+                                  });
+                </script>
+              </div>
+              <div class="HeaderBar-right">
+                High Contrast
+                <div class="Switch u-marginLeftHalf">
+                  <input id="Switch-off-2" type="checkbox"> <label for="Switch-off-2"></label>
+                </div>
+              </div>
+            </header>
+            <div class="u-marginBottomDouble" id="email-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+			<header class="HeaderBar">
+                <div class="HeaderBar-title">
+                  <h4 class="SectionHeading">Recommendations</h4>
+                  <h2>We've highlighted some ways to improve (COPY TBD)</h2>
+                </div>
+                <div class="HeaderBar-right"></div>
+             </header>
+
+				<div class="CardSet CardSet--threeColumn u-marginBottomDouble">
+				  <div class="Card">
+				    <a href="javascript:void(0)" class="Card-head back" style="background-color: #E0EFF6; background-size: 100px; background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIxLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Ikd1aWRlcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDE2IDE2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNiAxNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiM2MUE3RDU7fQo8L3N0eWxlPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQuNSwzaC0xM0MxLjIsMywxLDMuMiwxLDMuNXY5QzEsMTIuOCwxLjIsMTMsMS41LDEzaDEzYzAuMywwLDAuNS0wLjIsMC41LTAuNXYtOUMxNSwzLjIsMTQuOCwzLDE0LjUsM3oKCSBNMiw0LjdsMy42LDNMMiwxMS4zVjQuN3ogTTgsOC4zTDIuOCw0aDEwLjRMOCw4LjN6IE02LjQsOC40QzYuNCw4LjMsNi40LDguMyw2LjQsOC40bDEuMywxQzcuOCw5LjUsNy45LDkuNSw4LDkuNQoJYzAuMSwwLDAuMiwwLDAuMy0wLjFsMS4zLTEuMWwzLjYsMy42SDIuN0w2LjQsOC40eiBNMTAuNCw3LjdsMy42LTN2Ni42TDEwLjQsNy43eiIvPgo8L3N2Zz4K')"></a>
+
+				    <div class="Card-body">
+				        <h5 class="Card-title">Want more people to open your email?</h5>
+   						<h6 class="Card-subtitle">Try A/B testing your subject lines.</h6>
+   						<a href="#">Learn more</a>
+				    </div>
+				  </div>
+				  <div class="Card">
+				    <a href="javascript:void(0)" class="Card-head" style="background-color: #AEDCCF; background-size: 100px; background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIxLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Ikd1aWRlcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDE2IDE2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNiAxNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiM2OUIyOUM7fQo8L3N0eWxlPgo8Zz4KCTxyZWN0IHg9IjMiIHk9IjYiIGNsYXNzPSJzdDAiIHdpZHRoPSIzIiBoZWlnaHQ9IjYiLz4KCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xMyw2SDd2Nmg2VjZ6IE0xMiwxMUg4VjdoNFYxMXoiLz4KCTxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik0xNS41LDFoLTE1QzAuMiwxLDAsMS4yLDAsMS41djEzQzAsMTQuOCwwLjIsMTUsMC41LDE1aDE1YzAuMywwLDAuNS0wLjIsMC41LTAuNXYtMTNDMTYsMS4yLDE1LjgsMSwxNS41LDF6CgkJIE0yLDNoOXYxSDJWM3ogTTE0LDEzSDJWNWgxMlYxM3ogTTE0LDRoLTJWM2gyVjR6Ii8+CjwvZz4KPC9zdmc+Cg==')"></a>
+				    <div class="Card-body">
+				        <h5 class="Card-title">More generic "help" card (TBD)</h5>
+   						<h6 class="Card-subtitle">Some really appealing subtitle (TBD)</h6>
+   						<a href="#">Learn more</a>
+				    </div>
+				  </div>
+				  <div class="Card">
+				    <a href="javascript:void(0)" class="Card-head" style="background-color: #ffcccc; background-size: 100px; background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIxLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Ikd1aWRlcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDE2IDE2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNiAxNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiNFRDVENUQ7fQo8L3N0eWxlPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQuNywxMy4yTDksMkM4LjYsMS4yLDcuNCwxLjIsNywyTDEuMywxMy4yQzAuOSwxNC4xLDEuMSwxNSwyLDE1aDEyQzE0LjksMTUsMTUuMSwxNCwxNC43LDEzLjJ6IE04LDEzCgljLTAuNSwwLTEtMC40LTEtMWMwLTAuNSwwLjQtMSwxLTFzMSwwLjQsMSwxUzguNSwxMyw4LDEzeiBNOSwxMEg3VjVoMlYxMHoiLz4KPC9zdmc+Cg==')"></a>
+				    <div class="Card-body">
+				        <h5 class="Card-title">Your bounce rate recently increased</h5>
+   						<h6 class="Card-subtitle">But don’t worry! There’s several ways to fix this.</h6>
+   						<a href="#">Learn more</a>
+				    </div>
+				  </div>
+				</div>
+
+            <header class="HeaderBar">
+              <div class="HeaderBar-title">
+                <h4 class="SectionHeading">Email Performance by Campaign</h4>
+                <h2>See how individual campaigns performed.</h2>
+              </div>
+
+            </header>
+
+            <div class="HeaderBar HeaderBar--bulk">
+              <div class="HeaderBar-inner">
+                <div class="HeaderBar-title">
+                  <h5>10 Items</h5>
+                </div>
+                <div class="HeaderBar-left">
+                  <button class="Button" type="button">Export All</button>
+                  <button class="Button" type="button" disabled>Compare Selected</button>
+
+                </div>
+                <div class="HeaderBar-right">
+                  <div class="Field-wrapper" style="width: 200px;">
+                    <span class="Field-icon Icon--search"></span> <input id="text-input-icon" placeholder="Search Campaigns" type="text">
+                  </div>
+                </div>
+              </div>
+              <div class="HeaderBar-inner-bulk">
+                <div class="HeaderBar-title">
+                  <h5><span class="HeaderBar-title-count">1</span> selected</h5>
+                </div>
+                <div class="HeaderBar-left">
+                  <button class="Button" type="button">Export Selected</button> 
+                  <button class="Button" id="dialog_takeover" type="button">Compare Selected</button>
+                </div>
+                <div class="HeaderBar-right">
+                  <div class="Field-wrapper" style="width: 200px;">
+                    <span class="Field-icon Icon--search"></span> <input id="text-input-icon" placeholder="Search Campaigns" type="text">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <table class="Table u-marginBottomDouble">
+              <thead>
+                <tr>
+                  <th class="u-tableCellCollapse"><input class="Field--checkbox" id="checkbox1" type="checkbox"> <label class="u-block" for="checkbox1"></label></th>
+                  <th>Time Sent</th>
+                  <th>Campaign Name</th>
+                  <th>Sent</th>
+                  <th>Opens</th>
+                  <th>Mobile Opens</th>
+                  <th>Clicks</th>
+                  <th>Bounces</th>
+                  <th>Unsubscribed</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox2" type="checkbox"> <label class="u-block" for="checkbox2"></label></td>
+                  <td>Wed, Jul 19, 2018 11:13 AM</td>
+                  <td><a href="#">Test Email</a></td>
+                  <td><a href="#">2,356</a></td>
+                  <td><a href="#">465</a></td>
+                  <td><a href="#">221</a></td>
+                  <td><a href="#">437</a></td>
+                  <td><a href="#">4</a></td>
+                  <td><a href="#">0</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox3" type="checkbox"> <label class="u-block" for="checkbox3"></label></td>
+                  <td>Thur, Jul 20, 2018 11:13 AM</td>
+                  <td><a href="#">Summer BBQ Blowout!</a></td>
+                  <td><a href="#">489</a></td>
+                  <td><a href="#">785</a></td>
+                  <td><a href="#">320</a></td>
+                  <td><a href="#">380</a></td>
+                  <td><a href="#">7</a></td>
+                  <td><a href="#">2</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox4" type="checkbox"> <label class="u-block" for="checkbox4"></label></td>
+                  <td>Fri, Jul 21, 2018 11:13 AM</td>
+                  <td><a href="#">Newsletter Volume 5</a></td>
+                  <td><a href="#">1,296</a></td>
+                  <td><a href="#">120</a></td>
+                  <td><a href="#">32</a></td>
+                  <td><a href="#">976</a></td>
+                  <td><a href="#">0</a></td>
+                  <td><a href="#">6</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox5" type="checkbox"> <label class="u-block" for="checkbox5"></label></td>
+                  <td>Sat, Jul 22, 2018 11:13 AM</td>
+                  <td><a href="#">Check Out This Amazing Deal</a></td>
+                  <td><a href="#">698</a></td>
+                  <td><a href="#">287</a></td>
+                  <td><a href="#">121</a></td>
+                  <td><a href="#">129</a></td>
+                  <td><a href="#">23</a></td>
+                  <td><a href="#">12</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox6" type="checkbox"> <label class="u-block" for="checkbox6"></label></td>
+                  <td>Sun, Jul 23, 2018 11:13 AM</td>
+                  <td><a href="#">Are you ready for back to school sales?</a></td>
+                  <td><a href="#">1,493</a></td>
+                  <td><a href="#">345</a></td>
+                  <td><a href="#">99</a></td>
+                  <td><a href="#">307</a></td>
+                  <td><a href="#">98</a></td>
+                  <td><a href="#">1</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox7" type="checkbox"> <label class="u-block" for="checkbox7"></label></td>
+                  <td>Tue, Jul 24, 2018 11:13 AM</td>
+                  <td><a href="#">Event: Family night at the zoo</a></td>
+                  <td><a href="#">265</a></td>
+                  <td><a href="#">271</a></td>
+                  <td><a href="#">101</a></td>
+                  <td><a href="#">561</a></td>
+                  <td><a href="#">15</a></td>
+                  <td><a href="#">0</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox8" type="checkbox"> <label class="u-block" for="checkbox8"></label></td>
+                  <td>Wed, Jul 25, 2018 11:13 AM</td>
+                  <td><a href="#">Take $10 off for every referral</a></td>
+                  <td><a href="#">2,578</a></td>
+                  <td><a href="#">503</a></td>
+                  <td><a href="#">227</a></td>
+                  <td><a href="#">290</a></td>
+                  <td><a href="#">3</a></td>
+                  <td><a href="#">4</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox9" type="checkbox"> <label class="u-block" for="checkbox9"></label></td>
+                  <td>Thur, Jul 26, 2018 11:13 AM</td>
+                  <td><a href="#">Who wants to see the new...</a></td>
+                  <td><a href="#">761</a></td>
+                  <td><a href="#">109</a></td>
+                  <td><a href="#">65</a></td>
+                  <td><a href="#">159</a></td>
+                  <td><a href="#">12</a></td>
+                  <td><a href="#">8</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox10" type="checkbox"> <label class="u-block" for="checkbox10"></label></td>
+                  <td>Fri, Jul 27, 2018 11:13 AM</td>
+                  <td><a href="#">Newsletter Volume 6</a></td>
+                  <td><a href="#">1,895</a></td>
+                  <td><a href="#">228</a></td>
+                  <td><a href="#">76</a></td>
+                  <td><a href="#">987</a></td>
+                  <td><a href="#">0</a></td>
+                  <td><a href="#">2</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox10" type="checkbox"> <label class="u-block" for="checkbox10"></label></td>
+                  <td>Sat, Jul 28, 2018 11:13 AM</td>
+                  <td><a href="#">Quick Update from our CEO</a></td>
+                  <td><a href="#">529</a></td>
+                  <td><a href="#">227</a></td>
+                  <td><a href="#">194</a></td>
+                  <td><a href="#">987</a></td>
+                  <td><a href="#">0</a></td>
+                  <td><a href="#">2</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox10" type="checkbox"> <label class="u-block" for="checkbox10"></label></td>
+                  <td>Sun, Jul 29, 2018 11:13 AM</td>
+                  <td><a href="#">Newsletter Volume 7</a></td>
+                  <td><a href="#">1,360</a></td>
+                  <td><a href="#">972</a></td>
+                  <td><a href="#">340</a></td>
+                  <td><a href="#">987</a></td>
+                  <td><a href="#">0</a></td>
+                  <td><a href="#">2</a></td>
+                </tr>
+                <tr>
+                  <td><input class="Field--checkbox" id="checkbox10" type="checkbox"> <label class="u-block" for="checkbox10"></label></td>
+                  <td>Mon, Jul 30, 2018 11:13 AM</td>
+                  <td><a href="#">Check out this great deal from...</a></td>
+                  <td><a href="#">1,731</a></td>
+                  <td><a href="#">304</a></td>
+                  <td><a href="#">46</a></td>
+                  <td><a href="#">987</a></td>
+                  <td><a href="#">0</a></td>
+                  <td><a href="#">2</a></td>
+                </tr>
+              </tbody>
+            </table>
+            
+
+                  
+          </div>
+          <div id="tab-2">
+            <header class="HeaderBar">
+              <div class="HeaderBar-title">
+                <h4 class="SectionHeading">Contact Growth Over Time</h4>
+                <h2>See how many contacts have been added or unsubscribed during a specified time period.</h2>
+              </div>
+              <div class="HeaderBar-right">
+                <button class="Button Button--dropdown js-menu" type="button"><span data-menu-button-text="">Last 12 months</span></button> 
+                <script>
+                            $('.js-menu').fedMenu({
+                              selectable: true,
+                                    items: [
+                                    { text: 'Last 12 months', value: 'Last 12 months' },
+                                    { text: 'Last 30 days', value: 'Last 30 days' },
+                                    { text: 'Last 7 days', value: 'Last 7 days' },
+                                    { text: 'Last 24 hours', value: 'Last 24 hours' }
+
+                                      ]
+                                  });
+                </script>
+              </div>
+            </header>
+            <div class="Layout">
+
+              <div class="Layout-col-6 b2-Layout-col-3 u-marginBottomHalf">
+                <div class="Well Well--thin u-textCenter">
+                  <div class="u-fontSizeXXLarge u-weightBold u-colorLink js-tooltip">
+                    879
+                  </div>
+                  <div>
+                    Total contacts
+                  </div>
+                </div>
+              </div>
+
+              <div class="Layout-col-6 b2-Layout-col-3 u-marginBottomHalf">
+                <div class="Well Well--thin u-textCenter">
+                  <div class="u-fontSizeXXLarge u-weightBold u-colorLink js-tooltip">
+                    68
+                  </div>
+                  <div>
+                    New contacts
+                  </div>
+                </div>
+              </div>
+
+              <div class="Layout-col-6 b2-Layout-col-3 u-marginBottomHalf">
+                <div class="Well Well--thin u-textCenter">
+                  <div class="u-fontSizeXXLarge u-weightBold u-colorLink js-tooltip">
+                    12
+                  </div>
+                  <div>
+                    Unsubscribed
+                  </div>
+                </div>
+              </div>
+
+              <div class="Layout-col-6 b2-Layout-col-3 u-marginBottomHalf">
+                <div class="Well Well--thin u-textCenter">
+                  <div class="u-fontSizeXXLarge u-weightBold u-colorLink js-tooltip">
+                    26
+                  </div>
+                  <div>
+                    Bounces
+                  </div>
+                </div>
+              </div>
+            </div>
+            <header class="HeaderBar u-marginTopDouble">
+              <div class="HeaderBar-title">
+                <button class="Button Button--dropdown js-export-graph-menu" type="button"><span data-menu-button-text="">Download Graph</span></button> 
+                <script>
+                            $('.js-export-graph-menu').fedMenu({
+                                    items: [
+                                    { text: 'Download .png', value: 'png' },
+                                    { text: 'Download .jpg', value: 'jpg' },
+                                    { text: 'Download .svg', value: 'svg' },
+                                    { text: 'Download .pdf', value: 'pdf' }
+
+                                      ]
+                                  });
+                </script>
+              </div>
+              <div class="HeaderBar-right">
+                High Contrast
+                <div class="Switch u-marginLeftHalf">
+                  <input id="Switch-off" type="checkbox"> <label for="Switch-off"></label>
+                </div>
+              </div>
+            </header>
+            <div class="u-marginBottomDouble" id="contacts-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+				
+			<header class="HeaderBar">
+                <div class="HeaderBar-title">
+                  <h4 class="SectionHeading">Recommendations</h4>
+                  <h2>We've highlighted some ways to improve (COPY TBD)</h2>
+                </div>
+                <div class="HeaderBar-right"></div>
+             </header>
+				
+				<div class="CardSet CardSet--threeColumn u-marginBottomDouble">
+				  <div class="Card">
+				    <a href="javascript:void(0)" class="Card-head back" style="background-color: #E0EFF6; background-size: 100px; background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIxLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Ikd1aWRlcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDE2IDE2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNiAxNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiM4QjlEQzM7fQo8L3N0eWxlPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTMuNSwxaC0xMUMxLjcsMSwxLDEuNywxLDIuNXYxMUMxLDE0LjMsMS43LDE1LDIuNSwxNUg4di01SDZWOGgyVjZjMC0xLjgsMS4xLTMsMi44LTNjMC44LDAsMS44LDAsMi4yLDAuMlY1CgloLTEuNUMxMC42LDUsMTAsNS40LDEwLDZ2MmgzbC0wLjUsMkgxMHY1aDMuNWMwLjgsMCwxLjUtMC43LDEuNS0xLjV2LTExQzE1LDEuNywxNC4zLDEsMTMuNSwxeiIvPgo8L3N2Zz4K')"></a>
+
+				    <div class="Card-body">
+				        <h5 class="Card-title">Want to attract new leads?</h5>
+   						<h6 class="Card-subtitle">Try Facebook Lead Ads to expand your reach.</h6>
+   						<a href="#">Learn more</a>
+				    </div>
+				  </div>
+				  <div class="Card">
+				    <a href="javascript:void(0)" class="Card-head" style="background-color: #AEDCCF; background-size: 100px; background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIxLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Ikd1aWRlcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDE2IDE2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNiAxNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiM2OUIyOUM7fQo8L3N0eWxlPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTMsMWMwLTEtMC41LTEtMS0xSDRDMy42LDAsMy4zLDAuMiwzLjEsMC42QzMsMC43LDMsMC44LDMsMXYxNHYwYzAsMC42LDAuNCwxLDEsMWg3LjZIMTIKCWMwLjMsMCwwLjYtMC4yLDAuOC0wLjRjMCwwLDAtMC4xLDAuMS0wLjFjMCwwLDAuMS0wLjEsMC4xLTAuMWMwLTAuMSwwLjEtMC4yLDAuMS0wLjN2MFYxeiBNNywyaDJ2MUg3VjJ6IE04LDE1Yy0wLjYsMC0xLTAuNC0xLTEKCWMwLTAuNiwwLjQtMSwxLTFzMSwwLjQsMSwxQzksMTQuNiw4LjYsMTUsOCwxNXogTTEyLDEySDRWNGg4VjEyeiIvPgo8L3N2Zz4K')"></a>
+				    <div class="Card-body">
+				        <h5 class="Card-title">More generic "help" card (TBD)</h5>
+   						<h6 class="Card-subtitle">Some really appealing subtitle (TBD)</h6>
+   						<a href="#">Learn more</a>
+				    </div>
+				  </div>
+				  <div class="Card">
+				    <a href="javascript:void(0)" class="Card-head" style="background-color: #ffcccc; background-size: 100px; background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIxLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9Ikd1aWRlcyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiCgkgdmlld0JveD0iMCAwIDE2IDE2IiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAxNiAxNjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPgoJLnN0MHtmaWxsOiNFRDVENUQ7fQo8L3N0eWxlPgo8cGF0aCBjbGFzcz0ic3QwIiBkPSJNMTQuNywxMy4yTDksMkM4LjYsMS4yLDcuNCwxLjIsNywyTDEuMywxMy4yQzAuOSwxNC4xLDEuMSwxNSwyLDE1aDEyQzE0LjksMTUsMTUuMSwxNCwxNC43LDEzLjJ6IE04LDEzCgljLTAuNSwwLTEtMC40LTEtMWMwLTAuNSwwLjQtMSwxLTFzMSwwLjQsMSwxUzguNSwxMyw4LDEzeiBNOSwxMEg3VjVoMlYxMHoiLz4KPC9zdmc+Cg==')"></a>
+				    <div class="Card-body">
+				        <h5 class="Card-title">Your unsubscribe rate recently increased</h5>
+   						<h6 class="Card-subtitle">But don’t worry! There’s several ways to fix this.</h6>
+   						<a href="#">Learn more</a>
+				    </div>
+				  </div>
+				</div>
+
+
+              <header class="HeaderBar">
+                <div class="HeaderBar-title">
+                  <h4 class="SectionHeading">Contact Growth By Source</h4>
+                  <h2>See how many contacts have been added by each source.</h2>
+                </div>
+                <div class="HeaderBar-right"></div>
+              </header>
+
+            <div class="Layout u-marginBottomDouble">
+              <div class="Layout-col-12 b2-Layout-col-6">
+                <header class="HeaderBar">
+                  <div class="HeaderBar-title">
+                    <button class="Button Button--dropdown js-export-graph-menu" type="button"><span data-menu-button-text="">Download Graph</span></button> 
+                    <script>
+                                $('.js-export-graph-menu').fedMenu({
+                                        items: [
+                                        { text: 'Download .png', value: 'png' },
+                                        { text: 'Download .jpg', value: 'jpg' },
+                                        { text: 'Download .svg', value: 'svg' },
+                                        { text: 'Download .pdf', value: 'pdf' }
+
+                                          ]
+                                      });
+                    </script>
+                  </div>
+                  <div class="HeaderBar-right"></div>
+                </header>
+                <div id="piecontainer" style="min-width: 400px; margin: 0 auto"></div>
+              </div>
+              <div class="Layout-col-12 b2-Layout-col-6">
+                <div class="HeaderBar HeaderBar--bulk">
+                  <div class="HeaderBar-inner">
+                    <div class="HeaderBar-title">
+                      <h5>5 Items</h5>
+                    </div>
+                    <div class="HeaderBar-left">
+                      <button class="Button" type="button">Export All</button>
+                    </div>
+                    <div class="HeaderBar-right"></div>
+                  </div>
+                  <div class="HeaderBar-inner-bulk">
+                    <div class="HeaderBar-title">
+                      <h5><span class="HeaderBar-title-count">1</span> selected</h5>
+                    </div>
+                    <div class="HeaderBar-left">
+                      <button class="Button" type="button">Export Selected</button>
+                    </div>
+                    <div class="HeaderBar-right"></div>
+                  </div>
+                </div>
+                <table class="Table u-marginBottomDouble contacts-source-table">
+                  <thead>
+                    <tr>
+                      <th class="u-tableCellCollapse"><input class="Field--checkbox" id="checkbox1b" type="checkbox"> <label class="u-block" for="checkbox1b"></label></th>
+                      <th>Source</th>
+                      <th>Contacts</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><input class="Field--checkbox" id="checkbox2b" type="checkbox"> <label class="u-block" for="checkbox2b"></label></td>
+                      <td>Added by you</td>
+                      <td><a href="#">24</a></td>
+                    </tr>
+                    <tr>
+                      <td><input class="Field--checkbox" id="checkbox3b" type="checkbox"> <label class="u-block" for="checkbox3b"></label></td>
+                      <td>Facebook</td>
+                      <td><a href="#">18</a></td>
+                    </tr>
+                    <tr>
+                      <td><input class="Field--checkbox" id="checkbox4b" type="checkbox"> <label class="u-block" for="checkbox4b"></label></td>
+                      <td>Shopify</td>
+                      <td><a href="#">6</a></td>
+                    </tr>
+                    <tr>
+                      <td><input class="Field--checkbox" id="checkbox5b" type="checkbox"> <label class="u-block" for="checkbox5b"></label></td>
+                      <td>Eventbrite</td>
+                      <td><a href="#">4</a></td>
+                    </tr>
+                    <tr>
+                      <td><input class="Field--checkbox" id="checkbox6b" type="checkbox"> <label class="u-block" for="checkbox6b"></label></td>
+                      <td>Other sources</td>
+                      <td><a href="#">20</a></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+
+
+
+
+
+
+          </div>
+<!--           <div id="tab-3">
+            <p>Action blocks - TBD</p>
+          </div> -->
+
+        </div>
+        <div class="js-dialog u-hide" data-title="Compare Campaigns" data-trigger="#dialog_takeover" data-type="takeover">
+                  	
+                  	           <header class="HeaderBar u-marginTopDouble">
+					              <div class="HeaderBar-title">
+					                <button class="Button Button--dropdown js-export-graph-menu" type="button"><span data-menu-button-text="">Download Graph</span></button> 
+					                <script>
+					                            $('.js-export-graph-menu').fedMenu({
+					                                    items: [
+					                                    { text: 'Download .png', value: 'png' },
+					                                    { text: 'Download .jpg', value: 'jpg' },
+					                                    { text: 'Download .svg', value: 'svg' },
+					                                    { text: 'Download .pdf', value: 'pdf' }
+
+					                                      ]
+					                                  });
+					                </script>
+					              </div>
+					              <div class="HeaderBar-right">
+					                <button class="Button" id="dialog_takeover" type="button">Print Report</button>
+					              </div>
+					            </header>
+					            <div id="compare-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+					            <div class="HeaderBar">
+								  <div class="HeaderBar-title">
+								    <h5>3 Items</h5>
+								  </div>
+								  <div class="HeaderBar-left">
+								    <button class="Button">Export All</button>
+								  </div>
+								  <div class="HeaderBar-right">
+ 
+ 								  </div>
+								</div>
+				            <table class="Table u-marginBottomDouble">
+				              <thead>
+				                <tr>
+				                  <th>Time Sent</th>
+				                  <th>Campaign Name</th>
+				                  <th>Sent</th>
+				                  <th>Opens</th>
+				                  <th>Mobile Opens</th>
+				                  <th>Clicks</th>
+				                  <th>Bounces</th>
+				                  <th>Unsubscribed</th>
+				                </tr>
+				              </thead>
+				              <tbody>
+				                <tr>
+				                  <td>Wed, Jul 19, 2018 11:13 AM</td>
+				                  <td><a href="#">Test Email</a></td>
+				                  <td><a href="#">2,356</a></td>
+				                  <td><a href="#">465</a></td>
+				                  <td><a href="#">221</a></td>
+				                  <td><a href="#">437</a></td>
+				                  <td><a href="#">4</a></td>
+				                  <td><a href="#">0</a></td>
+				                </tr>
+				                <tr>
+				                  <td>Thur, Jul 20, 2018 11:13 AM</td>
+				                  <td><a href="#">Summer BBQ Blowout!</a></td>
+				                  <td><a href="#">489</a></td>
+				                  <td><a href="#">785</a></td>
+				                  <td><a href="#">320</a></td>
+				                  <td><a href="#">380</a></td>
+				                  <td><a href="#">7</a></td>
+				                  <td><a href="#">2</a></td>
+				                </tr>
+				                <tr>
+				                  <td>Fri, Jul 21, 2018 11:13 AM</td>
+				                  <td><a href="#">Newsletter Volume 5</a></td>
+				                  <td><a href="#">1,296</a></td>
+				                  <td><a href="#">120</a></td>
+				                  <td><a href="#">32</a></td>
+				                  <td><a href="#">976</a></td>
+				                  <td><a href="#">0</a></td>
+				                  <td><a href="#">6</a></td>
+				                </tr>
+				              </tbody>
+				            </table>
+
+
+                  </div>
+      </div>
+
+    </div>
+  </div><!-- Initialize FED JS Component -->
+  <script>
+     //needed for when elements are cloned, events arent copied
+
+
+                 					
+     function resetFED() {
+
+       $('.js-date-picker').fedDatePicker();
+       $('.js-date-range-picker').fedDateRangePicker();
+       $('.js-tooltip').fedTooltip();
+       $('.js-tab').fedTab();
+       $('.js-dialog').fedDialog({
+   title: 'Compare Campaigns',
+   clickPrimaryAction: function(e, data){
+     $(this).fedDialog('close');
+   }
+  });
+       $('Table input[type="checkbox"]').on('change', function(e) {
+   var $table = $(this).parents('Table'),
+       $headerBarNormal = $(this).parents('Table').prev('.HeaderBar'),
+       $headerBarBeforeScroller = $(this).parents('.Table-scroller').prev('.HeaderBar'),
+       $headerBar = $headerBarNormal.length ? $headerBarNormal : $headerBarBeforeScroller,
+       checkedItemsCount = $table.find('input[type="checkbox"]:checked').length;
+       $headerBar.toggleClass('is-open', (checkedItemsCount>0));
+   $headerBar.find('.HeaderBar-title-count').text(checkedItemsCount);
+  });
+
+
+
+
+
+Highcharts.setOptions({
+  lang: {
+    resetZoom: 'Reset Zoom'
+  }
+});
+
+$('#change-zoom-title').bind('click', function() {
+  chart.zoomOut();
+
+  Highcharts.setOptions({
+    lang: {
+      resetZoom: 'Reset Zoom'
+    }
+  });
+});
+
+
+  Highcharts.chart('email-container', {
+     chart: {
+        type: 'line',
+        zoomType: 'x',
+        panning: true,
+        panKey: 'shift',
+        resetZoomButton: {
+            theme: {
+                fill: '#FFFFFF',
+                stroke: '#78909c',
+                r: 2,
+                height: 14,
+                margin: 0,
+                padding: 11,
+          
+                style: {
+                    fontSize: '15px',
+                    fontFamily: 'Roboto,Helvetica Neue,Arial,sans-serif',
+                    textalign: 'center',
+                    verticalalign: 'middle',
+
+                },
+
+              
+                states: {
+                    hover: {
+                        fill: '#eceff1',
+                        fillOpacity: 0.1,
+                        stroke: '#546e7a',
+
+                        style: {
+                            color: '#4f595d'
+                        }
+                    }
+                }
+            }
+        }
+
+     },
+     title: {
+         text: null
+     },
+     subtitle: {
+        text: 'Highlight any section of the graph to zoom in. Hold shift to pan.',
+        align: 'center',
+        y: 20
+    },
+     exporting: { 
+         enabled: false
+   },
+     credits: {
+       enabled: false
+   },
+     xAxis: {
+         categories: ["Jan '18", "Feb '18", "Mar '18", "Apr '18", "May '18", "Jun '18", "Jul '18", "Aug '18", "Sep '18", "Oct '18", "Nov '18", "Dec '18"],
+         tickmarkPlacement: 'on',
+
+         title: {
+             enabled: false
+         }
+     },
+     yAxis: {
+
+     	 min: 0,
+         max: 100,
+
+         title: {
+             text: 'Percent' 
+         },
+         
+     },
+     tooltip: {
+
+         split: true,
+         valueSuffix: '%'
+     },
+     plotOptions: {
+
+         area: {
+             stacking: 'normal',
+             lineColor: '#666666',
+             lineWidth: 1,
+             marker: {
+                 lineWidth: 1,
+                 lineColor: '#666666'
+             }
+         }
+     },
+     series: [{
+         name: 'Total open rate',
+	     marker: {
+	            symbol: 'circle'
+	        },
+         data: [35, 45, 48, 50, 57, 55, 60, 65, 70, 72, 80, 94]
+     }, {
+         name: 'Mobile open rate',
+         	     marker: {
+	            symbol: 'circle'
+	        },
+         data: [22, 32, 40, 36, 40, 48, 44, 50, 55, 53, 60, 72]
+     }, {
+         name: 'Click rate',
+         	     marker: {
+	            symbol: 'circle'
+	        },
+         data: [12, 14, 10, 22, 19, 24, 28, 32, 30, 38, 41, 55]
+     }, {
+         name: 'Avg. industry open rate',
+         	     marker: {
+	            enabled: false,
+	        },
+         data: [14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14],
+         dashStyle: 'shortdot'
+     }, {
+         name: 'Avg. industry click rate',
+         	     marker: {
+	            enabled: false,
+	        },
+         data: [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+         dashStyle: 'shortdot'
+     }]
+  });
+
+  Highcharts.chart('contacts-container', {
+     chart: {
+        type: 'line',
+        zoomType: 'x',
+        panning: true,
+        panKey: 'shift',
+        resetZoomButton: {
+            theme: {
+                fill: '#FFFFFF',
+                stroke: '#78909c',
+                r: 2,
+                height: 14,
+                margin: 0,
+                padding: 11,
+          
+                style: {
+                    fontSize: '15px',
+                    fontFamily: 'Roboto,Helvetica Neue,Arial,sans-serif',
+                    textalign: 'center',
+                    verticalalign: 'middle',
+
+                },
+
+              
+                states: {
+                    hover: {
+                        fill: '#eceff1',
+                        fillOpacity: 0.1,
+                        stroke: '#546e7a',
+
+                        style: {
+                            color: '#4f595d'
+                        }
+                    }
+                }
+            }
+        }
+
+     },
+     title: {
+         text: null
+     },
+       subtitle: {
+        text: 'Highlight any section of the graph to zoom in. Hold shift to pan.',
+        align: 'center',
+        y: 20
+    },
+     exporting: { 
+         enabled: false
+               },  
+     credits: {
+       enabled: false
+   },
+     xAxis: {
+         categories: ["Jan '18", "Feb '18", "Mar '18", "Apr '18", "May '18", "Jun '18", "Jul '18", "Aug '18", "Sep '18", "Oct '18", "Nov '18", "Dec '18"],
+         tickmarkPlacement: 'on',
+         title: {
+             enabled: false
+         }
+     },
+     yAxis: {
+     	 min: 0,
+         max: 100,
+
+
+         title: {
+             text: 'Number of Contacts'
+         },
+         
+     },
+     tooltip: {
+         split: true,
+         valueSuffix: false,
+     },
+     plotOptions: {
+
+         area: {
+             stacking: 'normal',
+             lineColor: '#666666',
+             lineWidth: 1,
+             marker: {
+                 lineWidth: 1,
+                 lineColor: '#666666'
+             }
+         }
+     },
+     series: [{
+         name: 'Contacts',
+         data: [12, 45, 48, 44, 57, 55, 70, 65, 70, 96, 78, 70],
+         color: '#FEA802',
+         marker: {
+            symbol: 'circle'
+        }
+
+     }]
+  });
+
+
+Highcharts.chart('compare-container', {
+    chart: {
+        type: 'column'
+    },
+     title: {
+         text: null
+     },
+     exporting: { 
+         enabled: false
+   },
+     credits: {
+       enabled: false
+   },
+
+    xAxis: {
+        categories: [
+            'Open Rate',
+            'Click-Through Rate',
+            'Bounce Rate',
+            'Unsub Rate'
+            
+        ],
+        crosshair: true
+    },
+    yAxis: {
+        min: 0,
+        max: 100,
+        title: {
+            text: null
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        column: {
+            pointPadding: 0.2,
+            borderWidth: 0
+        }
+    },
+    series: [{
+        name: 'Test Email',
+        data: [49.9, 71.5, 106.4, 129.2]
+
+    }, {
+        name: 'Summer BBQ Blowout!',
+        data: [83.6, 78.8, 98.5, 93.4]
+
+    }, {
+        name: 'Newsletter Volume 5',
+        data: [48.9, 38.8, 39.3, 41.4]
+
+
+    }]
+});
+
+  $(function() {
+         // Create the chart
+         chart = new Highcharts.Chart({
+             chart: {
+                 renderTo: 'piecontainer',
+                 type: 'pie'
+             },
+             title: {
+                 text: null
+             },
+             exporting: { 
+                 enabled: false
+               },
+             credits: {
+                 enabled: false
+             },
+             legend: {
+               itemStyle: {
+                  fontSize:'10px',
+                  font: '10pt Roboto, sans-serif',
+                  color: '#394856'
+               },
+               layout: 'vertical',
+               align: 'right',
+               verticalAlign: 'middle',
+               floating: true,
+               backgroundColor: '#FFFFFF'
+              },
+
+             yAxis: {
+                 title: {
+                     text: 'Contact growth'
+                 }
+             },
+             plotOptions: {
+                 pie: {
+                     shadow: false
+                 }
+             },
+             tooltip: {
+                 formatter: function() {
+                     return '<b>'+ this.point.name +'<\/b>: '+ this.y +' %';
+                 }
+             },
+             series: [{
+                 name: 'Contacts Added',
+                 data: [["Added by you",24],["Facebook",18],["Shopify",6],["Eventbrite",4],["Other sources",20]],
+                 size: '70%',
+                 innerSize: '70%',
+                 showInLegend:true,
+                 dataLabels: {
+                     enabled: false
+                 }
+             }]
+         });
+     });
+
+     }
+     resetFED()
+  </script>
+</body>
+</html>
